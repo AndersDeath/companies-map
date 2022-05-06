@@ -2,39 +2,54 @@ import React, { useState } from 'react';
 import './App.css';
 import { MapContainer, Marker, Popup, TileLayer, useMapEvent } from 'react-leaflet';
 
-import logo from './logo.svg';
+import google from './google.svg';
+import amazon from './amazon.svg';
 
 import L from 'leaflet';
 
 
-
-
-
-
-
+const data: any = [
+  {
+    key: 1,
+    marker: new L.Icon({
+      iconUrl: google,
+      iconRetinaUrl: google,
+      iconSize: new L.Point(20,20),
+      className: 'icon-background'
+  }),
+    description: "Google",
+    point: [37.4168953, -122.0792296]
+  },
+  {
+    key: 2,
+    marker: new L.Icon({
+      iconUrl: amazon,
+      iconRetinaUrl: amazon,
+      iconSize: new L.Point(20,20),
+      className: 'icon-background'
+  }),
+    description: 'Amazon',
+    point: [47.6227501,-122.3389435,17]
+  }
+];
 
 
 
 function App() {
   const position: any = [37.4168953, -122.0792296];
 
-  const [marker, setMarker] = useState(new L.Icon({
-    iconUrl: logo,
-    iconRetinaUrl: logo,
-    iconSize: new L.Point(60,60),
-    className: 'icon-background'
-}));
+  const [marker, setMarker] = useState();
 
   function Zoomed() {
     const map = useMapEvent('zoomend', (event: any) => {
       console.log(event)
-      setMarker(new L.Icon({
-        iconUrl: logo,
-        iconRetinaUrl: logo,
-        iconSize: new L.Point(20,20),
-        className: 'icon-background'
-    }));
-    })
+    //   setMarker(new L.Icon({
+    //     iconUrl: logo,
+    //     iconRetinaUrl: logo,
+    //     iconSize: new L.Point(20,20),
+    //     className: 'icon-background'
+    // }));
+    });
     return null
   }
 
@@ -49,11 +64,15 @@ function App() {
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <Marker position={position} icon={marker}>
+    { data.map((element: any) => {
+        return <Marker key={element.key} position={element.point} icon={element.marker}>
       <Popup>
-        A pretty CSS3 popup. <br /> Easily customizable.
+        {element.description}
       </Popup>
     </Marker>
+      })
+    }
+    
   </MapContainer>
   );
 }
