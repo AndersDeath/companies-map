@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.icon-background {
+  background: #fff;
+  padding: 10px;
+  border-radius: 100px;
+  border: 1px solid #555;
+}
