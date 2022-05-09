@@ -4,6 +4,7 @@ import { MapContainer, Marker, Popup, TileLayer, useMapEvent } from 'react-leafl
 
 import google from './google.svg';
 import amazon from './amazon.svg';
+import zoho from './zoho.svg';
 
 import L from 'leaflet';
 
@@ -30,6 +31,17 @@ const data: any = [
   }),
     description: 'Amazon',
     point: [47.6227501,-122.3389435,17]
+  },
+  {
+    key: 3,
+    marker:  new L.Icon({
+      iconUrl: zoho,
+      iconRetinaUrl: zoho,
+      iconSize: new L.Point(50,20),
+      className: 'icon-background'
+  }),
+    description: 'Zoho',
+    point: [13.049620, 80.257290]
   }
 ];
 
