@@ -5,43 +5,43 @@ import { MapContainer, Marker, Popup, TileLayer, useMapEvent } from 'react-leafl
 import google from './google.svg';
 import amazon from './amazon.svg';
 import zoho from './zoho.svg';
+import booking from './booking.svg';
 
 import L from 'leaflet';
 
+function createMarker(icon: any, iconSize: any) {
+  return new L.Icon({
+    iconUrl: icon,
+    iconRetinaUrl: icon,
+    iconSize: new L.Point(iconSize[0], iconSize[1]),
+    className: 'icon-background'
+})
+}
 
 const data: any = [
   {
     key: 1,
-    marker: new L.Icon({
-      iconUrl: google,
-      iconRetinaUrl: google,
-      iconSize: new L.Point(20,20),
-      className: 'icon-background'
-  }),
+    marker: createMarker(google, [20, 20]),
     description: "Google",
     point: [37.4168953, -122.0792296]
   },
   {
     key: 2,
-    marker: new L.Icon({
-      iconUrl: amazon,
-      iconRetinaUrl: amazon,
-      iconSize: new L.Point(20,20),
-      className: 'icon-background'
-  }),
+    marker: createMarker(amazon, [20, 20]),
     description: 'Amazon',
-    point: [47.6227501,-122.3389435,17]
+    point: [47.6227501, -122.3389435,17]
   },
   {
     key: 3,
-    marker:  new L.Icon({
-      iconUrl: zoho,
-      iconRetinaUrl: zoho,
-      iconSize: new L.Point(50,20),
-      className: 'icon-background'
-  }),
+    marker: createMarker(zoho, [50, 20]),
     description: 'Zoho',
     point: [13.049620, 80.257290]
+  },
+  {
+    key: 4,
+    marker: createMarker(booking, [20, 20]),
+    description: 'Booking.com',
+    point: [52.365780, 4.898020]
   }
 ];
 
